@@ -1,0 +1,13 @@
+﻿<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Copyright © ${date?date?string("yyyy")} Nick Lampert, Justin Deurer
+${licensePrefix}
+${licensePrefix}E-Mail: nick.lampert@student.dhbw-karlsruhe.de
+${licensePrefix}Webseite: https://www.wirhabenkeinewebseite.de/
+${licensePrefix}
+${licensePrefix}Dieser Quellcode ist lizenziert unter einer
+${licensePrefix}Creative Commons Namensnennung 4.0 International Lizenz.
+<#if licenseLast??>
+${licenseLast}
+</#if>
