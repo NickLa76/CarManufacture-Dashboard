@@ -46,7 +46,7 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="task_owner">Eigentümer:</label>
+                <label for="task_owner">Ersteller:</label>
                 <div class="side-by-side">
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
@@ -102,16 +102,13 @@
                     <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
                 </div>
                 <label for="task_short_text">
-                    Bezeichnung 2.0:
+                    Variante:
                     <span class="required">*</span>
-                    </label>
-                     <div class="side-by-side">
-                    <input type="text" name="task_short_text" value="${fahrzeugmodell}">
-                </div>
-                
+                </label>
                 <div class="side-by-side">
                     <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
                 </div>
+                
                 <label for="task_long_text">
                     Ausstattung:
                 </label>

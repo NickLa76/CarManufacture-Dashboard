@@ -69,7 +69,7 @@ public class Task implements Serializable {
     public Task() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime) {
+    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime, String werk, String fertigungsstraße, String barcode, String Ausstattung) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
