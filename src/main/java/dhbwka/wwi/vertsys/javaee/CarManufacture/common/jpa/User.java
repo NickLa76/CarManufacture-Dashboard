@@ -46,6 +46,20 @@ public class User implements Serializable {
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
     
+    @Column(name = "FIRST_NAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Vorname muss zwischen 2 und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Vorname darf nicht leer sein.")
+    private String firstName;
+    
+    @Column(name = "LAST_NAME", length = 64)
+    @Size(min = 2, max = 64, message = "Der Nachname muss zwischen 2 und 64 Zeichen lang sein.")
+    @NotNull(message = "Der Nachname darf nicht leer sein.")
+    private String lastName;
+
+    public User(String username, String password) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
         public String password = "";
@@ -72,8 +86,10 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String firstName, String lastName, String password) {
         this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
     }
@@ -88,6 +104,22 @@ public class User implements Serializable {
         this.username = id;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public String getlastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
     public List<Task> getTasks() {
         return tasks;
     }
