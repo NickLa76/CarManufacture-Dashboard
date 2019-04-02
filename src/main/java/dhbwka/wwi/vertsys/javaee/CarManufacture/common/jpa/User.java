@@ -46,6 +46,11 @@ public class User implements Serializable {
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
     
+    @Column(name = "MITARBEITERNUMMER", length = 8)
+    @Size(min = 8, max = 8, message = "Die Mitarbeiternummer muss genau 8 Nummern beinhalten.")
+    @NotNull(message = "Die Mitarbeiternummer darf nicht leer sein.")
+    private String mitarbeiternummer;
+    
     @Column(name = "FIRST_NAME", length = 64)
     @Size(min = 2, max = 64, message = "Der Vorname muss zwischen 2 und 64 Zeichen lang sein.")
     @NotNull(message = "Der Vorname darf nicht leer sein.")
@@ -86,8 +91,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String firstName, String lastName, String password) {
+    public User(String username, String mitarbeiternummer, String firstName, String lastName, String password) {
         this.username = username;
+        this.mitarbeiternummer = mitarbeiternummer;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password.password = password;

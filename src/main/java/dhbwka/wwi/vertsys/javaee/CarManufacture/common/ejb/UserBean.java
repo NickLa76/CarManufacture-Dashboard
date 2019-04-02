@@ -41,15 +41,18 @@ public class UserBean {
     /**
      *
      * @param username
+     * @param mitarbeiternummer
+     * @param firstName
+     * @param lastName
      * @param password
      * @throws UserBean.UserAlreadyExistsException
      */
-    public void signup(String username, String firstName, String lastName, String password) throws UserAlreadyExistsException {
+    public void signup(String username, String mitarbeiternummer, String firstName, String lastName, String password) throws UserAlreadyExistsException {
         if (em.find(User.class, username) != null) {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
 
-        User user = new User(username, firstName, lastName, password);
+        User user = new User(username, mitarbeiternummer, firstName, lastName, password);
         user.addToGroup("app-user");
         em.persist(user);
     }
