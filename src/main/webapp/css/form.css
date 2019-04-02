@@ -24,6 +24,8 @@ form.stacked .side-by-side > * {
     display: block;
     box-sizing: border-box;
     width: 100%;
+    border-radius: 20px;
+    margin-bottom: 0.6em;
 }
 
 /* Container für nebeneinander liegende Elemente */
@@ -75,11 +77,12 @@ form.horizontal label:first-of-type  {
  * Allgemeingültige Layoutoptionen
  */
 form label {
+    color: #009acd;
     font-weight: bold;
 }
 
 form label .required {
-    color: darkred;
+    color: #009acd;
 }
 
 input,
