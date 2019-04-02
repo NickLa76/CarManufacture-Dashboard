@@ -45,6 +45,14 @@
                     <div class="side-by-side">
                         <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
                     </div>
+                    
+                    <label for="signup_mitarbeiternummer">
+                        Mitarbeiternummer:
+                        <span class="required">*</span>
+                    </label>
+                    <div class="side-by-side">
+                        <input type="text" name="signup_mitarbeiternummer" value="${signup_form.values["signup_mitarbeiternummer"][0]}">
+                    </div>
 
                     <label for="signup_first_name">
                         Vorname:
