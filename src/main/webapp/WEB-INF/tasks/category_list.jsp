@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Kategorien bearbeiten
+        Neue Fahrzeugkategorie hinzufügen
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -60,7 +60,7 @@
             <c:choose>
                 <c:when test="${empty categories}">
                     <p>
-                        Es sind noch keine Kategorien vorhanden. 🐏
+                        Es wurden noch keine neuen Kategorien angelegt. 🐏
                     </p>
                 </c:when>
                 <c:otherwise>

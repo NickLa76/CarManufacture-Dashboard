@@ -51,7 +51,7 @@
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
                 
-                <label for="task_category">Fahrzeugmodell</label>
+                <label for="task_category">Fahrzeugkategorie</label>
                 <div class="side-by-side">
                     <select name="task_category">
                         <option value="">----------</option>
