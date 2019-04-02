@@ -54,7 +54,14 @@
                 <label for="task_category">Kategorie:</label>
                 <div class="side-by-side">
                     <select name="task_category">
-                        <option value="">Keine Kategorie</option>
+                        <option value="">----------</option>
+                        <option value="">Kleinwagen</option>
+                         <option value="">Kombi</option>
+                         <option value="">Limousine</option>
+                         <option value="">Van/Minibus</option>
+                         <option value="">SUV/Geländewagen/Pickup</option>
+                         <option value="">Cabrio/Roadstar</option>
+                         <option value="">Sportwagen/Coupé</option>
 
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
