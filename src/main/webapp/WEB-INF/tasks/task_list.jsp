@@ -79,11 +79,13 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Bezeichnung</th>
-                            <th>Fahrzeugmodell</th>
-                            <th>Bearbeiter</th>
+                            <th>Beschreibung</th>
+                            <th>Fahrzeugkategorie</th>
+                            <th>Ersteller</th>
                             <th>Status</th>
                             <th>Fällig am</th>
+                            <th>Werk</th>
+                            <th>Fertigungsstraße</th>
                             <th>Barcode</th>
                             <th>Ausstattung</th>
                         </tr>
