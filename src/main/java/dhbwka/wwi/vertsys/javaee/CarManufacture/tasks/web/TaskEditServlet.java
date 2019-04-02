@@ -68,8 +68,9 @@ public class TaskEditServlet extends HttpServlet {
             // Keine Formulardaten mit fehlerhaften Daten in der Session,
             // daher Formulardaten aus dem Datenbankobjekt übernehmen
             request.setAttribute("task_form", this.createTaskForm(task));
+           
         }
-
+        request.setAttribute("fahrzeugmodell", "3er BMW");
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/tasks/task_edit.jsp").forward(request, response);
         

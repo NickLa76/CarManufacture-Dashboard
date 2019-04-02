@@ -50,8 +50,8 @@
                 <div class="side-by-side">
                     <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
                 </div>
-
-                <label for="task_category">Kategorie:</label>
+                
+                <label for="task_category">Fahrzeugmodell</label>
                 <div class="side-by-side">
                     <select name="task_category">
                         <option value="">----------</option>
@@ -101,9 +101,19 @@
                 <div class="side-by-side">
                     <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
                 </div>
-
+                <label for="task_short_text">
+                    Bezeichnung 2.0:
+                    <span class="required">*</span>
+                    </label>
+                     <div class="side-by-side">
+                    <input type="text" name="task_short_text" value="${fahrzeugmodell}">
+                </div>
+                
+                <div class="side-by-side">
+                    <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
+                </div>
                 <label for="task_long_text">
-                    Beschreibung:
+                    Ausstattung:
                 </label>
                 <div class="side-by-side">
                     <textarea name="task_long_text"><c:out value="${task_form.values['task_long_text'][0]}"/></textarea>

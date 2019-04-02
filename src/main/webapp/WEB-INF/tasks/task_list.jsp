@@ -80,10 +80,12 @@
                     <thead>
                         <tr>
                             <th>Bezeichnung</th>
-                            <th>Kategorie</th>
-                            <th>Eigentümer</th>
+                            <th>Fahrzeugmodell</th>
+                            <th>Bearbeiter</th>
                             <th>Status</th>
                             <th>Fällig am</th>
+                            <th>Barcode</th>
+                            <th>Ausstattung</th>
                         </tr>
                     </thead>
                     <c:forEach items="${tasks}" var="task">
