@@ -1,4 +1,4 @@
-Beispielanwendung "jTodo"
+Beispielanwendung "CarManufacture"
 =========================
 
 Kurzbeschreibung
@@ -9,7 +9,9 @@ Die Anwendung setzt dabei ganz klassisch auf der „Jakarta Enterprise Edition�
 (ehemals „Java Enterprise Edition“) auf und läuft daher in einem speziell dafür
 ausgelegten Applikationsserver. Sämtliche Anwendungslogik wird dabei vom Server
 implementiert, so dass für jedes URL-Pattern der Anwendung ein komplett serverseitig
-generierte HTML-Seite abgerufen und im Browser dargestellt wird.
+generierte HTML-Seite abgerufen und im Browser dargestellt wird. 
+Die Anwendung wurde für die Automobilbranche erstellt, hiermit wird es den Automobilhersttelern ermöglicht die Fertigung mit Hilfe eines intelligenten Dashboards zu steuern.
+
 
 Verwendete Technologien
 -----------------------
@@ -111,7 +113,7 @@ Copyright
 Dieses Projekt ist lizenziert unter
 [_Creative Commons Namensnennung 4.0 International_](http://creativecommons.org/licenses/by/4.0/)
 
-© 2018 – 2019 Dennis Schulmeister-Zimolong <br/>
+© 2018 – 2019 Nick Lampert, Justin Deurer <br/>
 
-E-Mail: [dhbw@windows3.de](mailto:dhbw@windows3.de) <br/>
-Webseite: https://www.wpvs.de
+E-Mail: [lampert.nick@student.dhbw-karlsruhe.de](mailto:lampert.nick@student.dhbw-karlsruhe.de) <br/>
+Webseite: https://www.wir-haben-keine-webseite.de
