@@ -109,7 +109,15 @@ public class User implements Serializable {
     public void setUsername(String id) {
         this.username = id;
     }
+    
+    public String getMitarbeiternummer() {
+        return mitarbeiternummer;
+    }
 
+    public void setMitarbeiternummer(String nr) {
+        this.mitarbeiternummer = nr;
+    }
+    
     public String getFirstName() {
         return firstName;
     }
