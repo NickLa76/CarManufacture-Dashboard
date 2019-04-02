@@ -40,7 +40,7 @@
                     <input type="text" name="profil_username" value="${user.username}" readonly="readonly">
                     
                     <label for="profil_mitarbeiternummer">
-                        Vorname:
+                        Mitarbeiternummer:
                         <span class="required">*</span>
                     </label>
                     <c:choose>

@@ -34,10 +34,7 @@
         <div class="menuitem">
             <a href="<c:url value="/app/tasks/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
         </div>
-        
-        <div class="menuitem">
-            <a href="<c:url value="/app/tasks/profil/"/>">Mein Profil</a>
-        </div>
+
 
     </jsp:attribute>
 
