@@ -23,14 +23,6 @@
     <jsp:attribute name="content">
         <div class="container">
             <div>
-                Benutzername:
-                <span>${user.username}</span>
-            </div>
-            <div>
-                Mitarbeiternummer:
-                <span>${user.mitarbeiternummer}</span>
-            </div>
-            <div>
                 Vorname:
                 <span>${user.firstName}</span>
             </div>
@@ -38,6 +30,15 @@
                 Nachname:
                 <span>${user.lastName}</span>
             </div>
+            <div>
+                Benutzername:
+                <span>${user.username}</span>
+            </div>
+            <div>
+                Mitarbeiternummer:
+                <span>${user.mitarbeiternummer}</span>
+            </div>
+            
         </div>
     </jsp:attribute>
 </template:base>
