@@ -35,8 +35,9 @@
             <a href="<c:url value="/app/bookings/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
         </div>
         
+        
         <div class="menuitem">
-            <a href="<c:url value="/app/profile/"/>">Mein Profil</a>
+            <a href="<c:url value="/app/profil/"/>">Mein Profil</a>
         </div>
 
     </jsp:attribute>
