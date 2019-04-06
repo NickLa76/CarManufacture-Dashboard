@@ -7,12 +7,12 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa;
 
 /**
  * Statuswerte einer Aufgabe.
  */
-public enum TaskStatus {
+public enum BookingStatus {
     OPEN, IN_PROGRESS, FINISHED, CANCELED, POSTPONED;
 
     /**

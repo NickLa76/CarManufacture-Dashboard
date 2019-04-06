@@ -10,8 +10,8 @@ package dhbwka.wwi.vertsys.javaeee.CarManifacture.webservice;
 
 
 
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.TaskBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.BookingBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.BookingStatus;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -25,13 +25,13 @@ import javax.ws.rs.core.MediaType;
 public class CarService {
 
     @EJB
-    TaskBean taskBean;
+    BookingBean bookingBean;
 
-    @Path("tasks")
+    @Path("bookings")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public String getAll() {
-       return taskBean.findAll().get(0).getStatus().toString();
+       return bookingBean.findAll().get(0).getStatus().toString();
         
     }
 }

@@ -9,7 +9,7 @@
  */
 package dhbwka.wwi.vertsys.javaee.CarManufacture.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Booking;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -88,7 +88,7 @@ public class User implements Serializable {
     List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Task> tasks = new ArrayList<>();
+    List<Booking> bookings = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -138,12 +138,12 @@ public class User implements Serializable {
     }
     
     @XmlTransient
-    public List<Task> getTasks() {
-        return tasks;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
     //</editor-fold>
 

@@ -7,14 +7,14 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.web;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.web;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.TaskBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.BookingBean;
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Booking;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -31,14 +31,14 @@ import javax.servlet.http.HttpSession;
  * Formular, mit dem ein neue Kategorie angelegt werden kann, sowie eine Liste,
  * die zum Löschen der Kategorien verwendet werden kann.
  */
-@WebServlet(urlPatterns = {"/app/tasks/categories/"})
+@WebServlet(urlPatterns = {"/app/bookings/categories/"})
 public class CategoryListServlet extends HttpServlet {
 
     @EJB
     CategoryBean categoryBean;
 
     @EJB
-    TaskBean taskBean;
+    BookingBean bookingBean;
 
     @EJB
     ValidationBean validationBean;
@@ -51,7 +51,7 @@ public class CategoryListServlet extends HttpServlet {
         request.setAttribute("categories", this.categoryBean.findAllSorted());
 
         // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/tasks/category_list.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/bookings/category_list.jsp");
         dispatcher.forward(request, response);
 
         // Alte Formulardaten aus der Session entfernen
@@ -149,12 +149,12 @@ public class CategoryListServlet extends HttpServlet {
             }
 
             // Bei allen betroffenen Aufgaben, den Bezug zur Kategorie aufheben
-            List<Task> tasks = category.getTasks();
+            List<Booking> bookings = category.getBookings();
 
-            if (tasks != null) {
-                tasks.forEach((Task task) -> {
-                    task.setCategory(null);
-                    this.taskBean.update(task);
+            if (bookings != null) {
+                bookings.forEach((Booking booking) -> {
+                    booking.setCategory(null);
+                    this.bookingBean.update(booking);
                 });
             }
 

@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.jpa.User;
 import java.io.Serializable;
@@ -30,13 +30,13 @@ import javax.validation.constraints.Size;
  * Eine zu erledigende Aufgabe.
  */
 @Entity
-public class Task implements Serializable {
+public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
-    @TableGenerator(name = "task_ids", initialValue = 0, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "booking_ids")
+    @TableGenerator(name = "booking_ids", initialValue = 0, allocationSize = 50)
     private long id;
 
     @ManyToOne
@@ -63,13 +63,13 @@ public class Task implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private TaskStatus status = TaskStatus.OPEN;
+    private BookingStatus status = BookingStatus.OPEN;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Task() {
+    public Booking() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime, String werk, String fertigungsstraße, String barcode, String Ausstattung) {
+    public Booking(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime, String werk, String fertigungsstraße, String barcode, String Ausstattung) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
@@ -136,11 +136,11 @@ public class Task implements Serializable {
         this.dueTime = dueTime;
     }
 
-    public TaskStatus getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
     }
     //</editor-fold>

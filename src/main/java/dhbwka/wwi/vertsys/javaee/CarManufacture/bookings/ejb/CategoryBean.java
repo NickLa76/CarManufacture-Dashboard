@@ -7,10 +7,10 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Category;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
