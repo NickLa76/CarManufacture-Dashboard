@@ -16,9 +16,9 @@ public enum BookingStatus {
     OPEN, IN_PROGRESS, FINISHED, CANCELED, POSTPONED;
 
     /**
-     * Bezeichnung ermitteln
+     * Modell ermitteln
      *
-     * @return Bezeichnung
+     * @return Modell
      */
     public String getLabel() {
         switch (this) {

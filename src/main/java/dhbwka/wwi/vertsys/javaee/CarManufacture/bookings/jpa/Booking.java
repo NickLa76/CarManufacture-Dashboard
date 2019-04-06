@@ -47,8 +47,8 @@ public class Booking implements Serializable {
     private Category category;
 
     @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
+    @NotNull(message = "Das Modell darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Das Modell muss zwischen ein und 50 Zeichen lang sein.")
     private String shortText;
 
     @Lob

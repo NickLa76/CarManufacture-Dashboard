@@ -51,28 +51,15 @@
                     <input type="text" name="booking_owner" value="${booking_form.values["booking_owner"][0]}" readonly="readonly">
                 </div>
                 
-                <label for="booking_category">Fahrzeugkategorie</label>
-                <div class="side-by-side">
-                    <select name="booking_category">
-                        <option value="">----------</option>
-
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${booking_form.values["booking_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
                 <label for="booking_due_date">
-                    Fällig am:
+                    Erstellungsdatum:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
                     <input type="text" name="booking_due_date" value="${booking_form.values["booking_due_date"][0]}">
                     <input type="text" name="booking_due_time" value="${booking_form.values["booking_due_time"][0]}">
                 </div>
-
+                
                 <label for="booking_status">
                     Status:
                     <span class="required">*</span>
@@ -86,16 +73,47 @@
                         </c:forEach>
                     </select>
                 </div>
+                
+                <label for="booking_category">Fahrzeugkategorie</label>
+                <div class="side-by-side">
+                    <select name="booking_category">
+                        <option value="">----------</option>
+
+                        <c:forEach items="${categories}" var="category">
+                            <option value="${category.id}" ${booking_form.values["booking_category"][0] == category.id.toString() ? 'selected' : ''}>
+                                <c:out value="${category.name}" />
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+
+               
 
                 <label for="booking_short_text">
-                    Bezeichnung:
+                    Modell:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
                     <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}">
                 </div>
                 <label for="booking_short_text">
-                    Variante:
+                    Motorisierung:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}">
+                </div>
+                
+                <label for="booking_short_text">
+                    Farbe:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}">
+                </div>
+                
+                <label for="booking_short_text">
+                    Werk:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">

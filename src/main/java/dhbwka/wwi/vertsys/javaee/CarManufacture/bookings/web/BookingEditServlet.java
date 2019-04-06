@@ -70,7 +70,7 @@ public class BookingEditServlet extends HttpServlet {
             request.setAttribute("booking_form", this.createBookingForm(booking));
            
         }
-        request.setAttribute("fahrzeugmodell", "3er BMW");
+        request.setAttribute("Modell", "C-Klasse");
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/bookings/booking_edit.jsp").forward(request, response);
         

@@ -39,7 +39,7 @@
     <jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
+            <input type="text" name="search_text" value="${param.search_text}" placeholder="Modell"/>
 
             <select name="search_category">
                 <option value="">Alle Kategorien</option>
@@ -79,14 +79,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Beschreibung</th>
+                            <th>Modell</th>
                             <th>Fahrzeugkategorie</th>
-                            <th>Ersteller</th>
+                            <th>Motorisierung</th>
                             <th>Status</th>
-                            <th>Fällig am</th>
+                            <th>Ersteller</th>
+                            <th>Farbe</th>
+                            <th>Erstellungsdatum</th>
                             <th>Werk</th>
-                            <th>Fertigungsstraße</th>
-                            <th>Barcode</th>
                             <th>Ausstattung</th>
                         </tr>
                     </thead>
