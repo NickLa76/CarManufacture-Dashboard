@@ -118,6 +118,10 @@ public class BookingEditServlet extends HttpServlet {
         String bookingStatus = request.getParameter("booking_status");
         String bookingShortText = request.getParameter("booking_short_text");
         String bookingLongText = request.getParameter("booking_long_text");
+        String bookingWerk = request.getParameter("booking_werk");
+        String bookingFarbe = request.getParameter("booking_farbe");
+        String bookingMotor = request.getParameter("booking_motor");
+        
 
         Booking booking = this.getRequestedBooking(request);
 
@@ -152,6 +156,9 @@ public class BookingEditServlet extends HttpServlet {
 
         booking.setShortText(bookingShortText);
         booking.setLongText(bookingLongText);
+        booking.setMotor(bookingMotor);
+        booking.setFarbe(bookingFarbe);
+        booking.setWerk(bookingWerk);
 
         this.validationBean.validate(booking, errors);
 
@@ -274,6 +281,18 @@ public class BookingEditServlet extends HttpServlet {
 
         values.put("booking_long_text", new String[]{
             booking.getLongText()
+        });
+        
+        values.put("booking_werk", new String[]{
+            booking.getWerk()
+        });
+        
+        values.put("booking_farbe", new String[]{
+            booking.getFarbe()
+        });
+        
+        values.put("booking_motor", new String[]{
+            booking.getMotor()
         });
 
         FormValues formValues = new FormValues();

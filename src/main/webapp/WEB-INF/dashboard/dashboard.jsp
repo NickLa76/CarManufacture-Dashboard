@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/bookings/booking/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/bookings/booking/new/"/>">Bestellung aufgeben</a>
         </div>
 
         <div class="menuitem">

@@ -50,6 +50,21 @@ public class Booking implements Serializable {
     @NotNull(message = "Das Modell darf nicht leer sein.")
     @Size(min = 1, max = 50, message = "Das Modell muss zwischen ein und 50 Zeichen lang sein.")
     private String shortText;
+    
+    @Column(length = 50)
+    @NotNull(message = "Die Farbe darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Die Farbe muss zwischen ein und 50 Zeichen lang sein.")
+    private String farbe;
+     
+    @Column(length = 50)
+    @NotNull(message = "Das Werk darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Das Modell muss zwischen ein und 50 Zeichen lang sein.")
+    private String werk;
+    
+    @Column(length = 50)
+    @NotNull(message = "Die Motorisierung darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Die Motorisierung muss zwischen ein und 50 Zeichen lang sein.")
+    private String motor; 
 
     @Lob
     @NotNull
@@ -69,17 +84,46 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public Booking(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime, String werk, String fertigungsstraße, String barcode, String Ausstattung) {
+    public Booking(String shortText, Category category, String motor, BookingStatus status, Date dueDate, Time dueTime, User owner, String farbe, String longText, String werk) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
         this.longText = longText;
         this.dueDate = dueDate;
         this.dueTime = dueTime;
+        this.motor = motor;
+        this.status = status;
+        this.werk = werk;
+        this.farbe = farbe;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
+    
+    public String getFarbe() {
+        return farbe;
+    }
+
+    public void setFarbe(String farbe) {
+        this.farbe = farbe;
+    }
+    
+   public String getWerk() {
+        return werk;
+    }
+
+    public void setWerk(String werk) {
+        this.werk = werk;
+    }
+    
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+    
     public long getId() {
         return id;
     }
@@ -143,6 +187,8 @@ public class Booking implements Serializable {
     public void setStatus(BookingStatus status) {
         this.status = status;
     }
+    
+    
     //</editor-fold>
 
 }

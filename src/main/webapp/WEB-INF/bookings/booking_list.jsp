@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Aufgaben
+        Liste der Bestellungen
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -28,7 +28,7 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/bookings/booking/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/bookings/booking/new/"/>">Bestellung aufgeben</a>
         </div>
 
         <div class="menuitem">
@@ -70,7 +70,8 @@
         <c:choose>
             <c:when test="${empty bookings}">
                 <p>
-                    Es wurden keine Aufgaben gefunden. 🐈
+                    Es wurden keine Besstelung gefunden. 🐈
+                    Also bestell etwas! 
                 </p>
             </c:when>
             <c:otherwise>
@@ -101,14 +102,34 @@
                                 <c:out value="${booking.category.name}"/>
                             </td>
                             <td>
-                                <c:out value="${booking.owner.username}"/>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.motor}"/>
+                                </a>
                             </td>
                             <td>
                                 <c:out value="${booking.status.label}"/>
                             </td>
                             <td>
+                                <c:out value="${booking.owner.username}"/>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.farbe}"/>
+                                </a>
+                            </td>
+                            <td>
                                 <c:out value="${utils.formatDate(booking.dueDate)}"/>
                                 <c:out value="${utils.formatTime(booking.dueTime)}"/>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.werk}"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.longText}"/>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
