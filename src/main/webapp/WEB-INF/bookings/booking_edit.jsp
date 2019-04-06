@@ -55,13 +55,6 @@
                 <div class="side-by-side">
                     <select name="booking_category">
                         <option value="">----------</option>
-                        <option value="">Kleinwagen</option>
-                         <option value="">Kombi</option>
-                         <option value="">Limousine</option>
-                         <option value="">Van/Minibus</option>
-                         <option value="">SUV/Geländewagen/Pickup</option>
-                         <option value="">Cabrio/Roadstar</option>
-                         <option value="">Sportwagen/Coupé</option>
 
                         <c:forEach items="${categories}" var="category">
                             <option value="${category.id}" ${booking_form.values["booking_category"][0] == category.id.toString() ? 'selected' : ''}>
