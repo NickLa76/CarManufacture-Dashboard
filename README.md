@@ -41,13 +41,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot1.png">
-                <img src="screenshot1.png" style="display: block; width: 100%;" />
+            <a href="Login.png">
+                <img src="Login.png" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot2.png">
-                <img src="screenshot2.png" style="display: block; width: 100%;" />
+            <a href="Registrierung.png">
+                <img src="Registrierung.png" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -64,13 +64,13 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot3.png">
-                <img src="screenshot3.png" style="display: block; width: 100%;" />
+            <a href="Dashboard.png">
+                <img src="Dashboard.png" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot4.png">
-                <img src="screenshot4.png" style="display: block; width: 100%;" />
+            <a href="Liste_Bestellungen.png">
+                <img src="Liste_Bestellungen.png" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
@@ -79,7 +79,7 @@ Screenshots
             Dashboard
         </td>
         <td>
-            Liste mit Aufgaben
+            Liste mit Bestellungen
         </td>
     </tr>
 </table>
@@ -87,19 +87,19 @@ Screenshots
 <table style="max-width: 100%;">
     <tr>
         <td>
-            <a href="screenshot5.png">
-                <img src="screenshot5.png" style="display: block; width: 100%;" />
+            <a href="BestellungBearbeiten.png">
+                <img src="BestellungBearbeiten.png" style="display: block; width: 100%;" />
             </a>
         </td>
         <td>
-            <a href="screenshot6.png">
-                <img src="screenshot6.png" style="display: block; width: 100%;" />
+            <a href="Fahrezeugkategorie.png">
+                <img src="Fahrezeugkategorie.png" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
     <tr>
         <td>
-            Aufgabe bearbeiten
+            Bestellung bearbeiten
         </td>
         <td>
             Kategorien bearbeiten
@@ -107,6 +107,28 @@ Screenshots
     </tr>
 </table>
 
+<table style="max-width: 100%;">
+    <tr>
+        <td>
+            <a href="MeinProfil.png">
+                <img src="MeinProfil.png" style="display: block; width: 100%;" />
+            </a>
+        </td>
+        <td>
+            <a href="ProfilBearbeiten.png">
+                <img src="ProfilBearbeiten.png" style="display: block; width: 100%;" />
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            MeinProfil
+        </td>
+        <td>
+            Profil Bearbeiten
+        </td>
+    </tr>
+</table>
 Copyright
 ---------
 
