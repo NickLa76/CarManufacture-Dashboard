@@ -56,6 +56,22 @@ public class UserBean {
         user.addToGroup("app-user");
         em.persist(user);
     }
+    public void validateUser(String username, String password)
+            throws InvalidCredentialsException, AccessRestrictedException, InvalidCredentialsException {
+
+        // Benutzer suchen und Passwort prüfen
+        User user = em.find(User.class, username);
+     
+
+        if (user == null || !user.checkPassword(password)) {
+            throw new InvalidCredentialsException("Benutzername oder Passwort falsch.");
+        }
+
+        // Zugeordnete Benutzergruppen prüfen, mindestens eine muss vorhanden sein
+          
+        // Alles okay!
+     
+    }
 
     /**
      * Passwort ändern (ohne zu speichern)
@@ -110,6 +126,12 @@ public class UserBean {
 
         public InvalidCredentialsException(String message) {
             super(message);
+        }
+    }
+    
+    public static class AccessRestrictedException extends Exception {
+
+        public AccessRestrictedException() {
         }
     }
 
