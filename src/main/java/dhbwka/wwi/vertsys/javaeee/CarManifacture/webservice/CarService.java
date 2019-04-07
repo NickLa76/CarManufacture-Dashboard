@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author Yannick Ulmrich
+ * @author lampern
  */
 public class CarService {
 
