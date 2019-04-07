@@ -92,8 +92,8 @@ Screenshots
             </a>
         </td>
         <td>
-            <a href="Fahrezeugkategorie.png">
-                <img src="Fahrezeugkategorie.png" style="display: block; width: 100%;" />
+            <a href="Fahrzeugkategorie.png">
+                <img src="Fahrzeugkategorie.png" style="display: block; width: 100%;" />
             </a>
         </td>
     </tr>
