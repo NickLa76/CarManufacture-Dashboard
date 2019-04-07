@@ -17,7 +17,7 @@
     <jsp:attribute name="title">
         <c:choose>
             <c:when test="${edit}">
-                Bestellung bearbeiten
+                Bestellung bearbeiten ⚙️
             </c:when>
             <c:otherwise>
                 Bestellung anlegen

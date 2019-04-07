@@ -15,7 +15,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Bestellungen
+        Liste der Bestellungen 📋
     </jsp:attribute>
 
     <jsp:attribute name="head">
