@@ -26,7 +26,7 @@ public class main {
 
         // Abgerufenes Ergebnis anzeigen
         System.out.println("========================");
-        System.out.println("Die groÃŸe SOAP-Videothek");
+        System.out.println("Die große Autoproduktion");
         System.out.println("========================");
         System.out.println();
         
