@@ -6,6 +6,8 @@
 package dhbwka.wwi.vertsys.javaee.CarManufacture.soap;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.common.jpa.User;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
@@ -38,4 +40,11 @@ public class CarManufactureSOAP {
     
     return "OK";
 }
+    
+    @WebMethod
+    @WebResult (name="name")
+    public List<User> findeAlle(){
+        return this.userBean.findeAlle();
+    }
+    
 }

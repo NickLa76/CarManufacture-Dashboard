@@ -10,6 +10,7 @@
 package dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.jpa.User;
+import java.util.List;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
@@ -71,6 +72,10 @@ public class UserBean {
           
         // Alles okay!
      
+    }
+    
+    public List<User> findeAlle(){
+        return em.createQuery("SELECT u FROM User u ORDER BY u.username").getResultList();
     }
 
     /**

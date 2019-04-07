@@ -17,7 +17,7 @@
     <jsp:attribute name="title">
         <c:choose>
             <c:when test="${edit}">
-                Bestellung bearbeiten ⚙️
+                Bestellung bearbeiten ⚙
             </c:when>
             <c:otherwise>
                 Bestellung anlegen
@@ -56,8 +56,8 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="booking_due_date" value="${booking_form.values["booking_due_date"][0]}">
-                    <input type="text" name="booking_due_time" value="${booking_form.values["booking_due_time"][0]}">
+                    <input type="text" name="booking_due_date" value="${booking_form.values["booking_due_date"][0]}" readonly="readonly">
+                    <input type="text" name="booking_due_time" value="${booking_form.values["booking_due_time"][0]}" readonly="readonly">
                 </div>
                 
                 <label for="booking_status">
@@ -74,19 +74,7 @@
                     </select>
                 </div>
                 
-                <label for="booking_category">Fahrzeugkategorie</label>
-                <div class="side-by-side">
-                    <select name="booking_category">
-                        <option value="">----------</option>
-
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${booking_form.values["booking_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
+               
                
 
                 <label for="booking_short_text">
@@ -94,7 +82,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}">
+                    <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}" readonly="readonly">
                 </div>
                 
                 <label for="booking_motor">
@@ -102,7 +90,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="booking_motor" value="${booking_form.values["booking_motor"][0]}">
+                    <input type="text" name="booking_motor" value="${booking_form.values["booking_motor"][0]}" readonly="readonly">
                 </div>
                 
                 <label for="booking_farbe">
@@ -110,7 +98,7 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="booking_farbe" value="${booking_form.values["booking_farbe"][0]}">
+                    <input type="text" name="booking_farbe" value="${booking_form.values["booking_farbe"][0]}" readonly="readonly">
                 </div>
                 
                 <label for="booking_werk">
@@ -118,16 +106,10 @@
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="booking_werk" value="${booking_form.values["booking_werk"][0]}">
+                    <input type="text" name="booking_werk" value="${booking_form.values["booking_werk"][0]}" readonly="readonly">
                 </div>
                 
-                <label for="booking_long_text">
-                    Ausstattung:
-                </label>
-                <div class="side-by-side">
-                    <textarea name="booking_long_text"><c:out value="${booking_form.values['booking_long_text'][0]}"/></textarea>
-                </div>
-
+                
                 <%-- Button zum Abschicken --%>
                 <div class="side-by-side">
                     <button class="icon-pencil" type="submit" name="action" value="save">
