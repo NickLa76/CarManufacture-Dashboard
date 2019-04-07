@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.jpa.User;
 import java.io.Serializable;
@@ -30,13 +30,13 @@ import javax.validation.constraints.Size;
  * Eine zu erledigende Aufgabe.
  */
 @Entity
-public class Task implements Serializable {
+public class Booking implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "task_ids")
-    @TableGenerator(name = "task_ids", initialValue = 0, allocationSize = 50)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "booking_ids")
+    @TableGenerator(name = "booking_ids", initialValue = 0, allocationSize = 50)
     private long id;
 
     @ManyToOne
@@ -47,9 +47,24 @@ public class Task implements Serializable {
     private Category category;
 
     @Column(length = 50)
-    @NotNull(message = "Die Bezeichnung darf nicht leer sein.")
-    @Size(min = 1, max = 50, message = "Die Bezeichnung muss zwischen ein und 50 Zeichen lang sein.")
+    @NotNull(message = "Das Modell darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Das Modell muss zwischen ein und 50 Zeichen lang sein.")
     private String shortText;
+    
+    @Column(length = 50)
+    @NotNull(message = "Die Farbe darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Die Farbe muss zwischen ein und 50 Zeichen lang sein.")
+    private String farbe;
+     
+    @Column(length = 50)
+    @NotNull(message = "Das Werk darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Das Modell muss zwischen ein und 50 Zeichen lang sein.")
+    private String werk;
+    
+    @Column(length = 50)
+    @NotNull(message = "Die Motorisierung darf nicht leer sein.")
+    @Size(min = 1, max = 50, message = "Die Motorisierung muss zwischen ein und 50 Zeichen lang sein.")
+    private String motor; 
 
     @Lob
     @NotNull
@@ -63,23 +78,52 @@ public class Task implements Serializable {
 
     @Enumerated(EnumType.STRING)
     @NotNull
-    private TaskStatus status = TaskStatus.OPEN;
+    private BookingStatus status = BookingStatus.OPEN;
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
-    public Task() {
+    public Booking() {
     }
 
-    public Task(User owner, Category category, String shortText, String longText, Date dueDate, Time dueTime, String werk, String fertigungsstraße, String barcode, String Ausstattung) {
+    public Booking(String shortText, Category category, String motor, BookingStatus status, Date dueDate, Time dueTime, User owner, String farbe, String longText, String werk) {
         this.owner = owner;
         this.category = category;
         this.shortText = shortText;
         this.longText = longText;
         this.dueDate = dueDate;
         this.dueTime = dueTime;
+        this.motor = motor;
+        this.status = status;
+        this.werk = werk;
+        this.farbe = farbe;
     }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Setter und Getter">
+    
+    public String getFarbe() {
+        return farbe;
+    }
+
+    public void setFarbe(String farbe) {
+        this.farbe = farbe;
+    }
+    
+   public String getWerk() {
+        return werk;
+    }
+
+    public void setWerk(String werk) {
+        this.werk = werk;
+    }
+    
+    public String getMotor() {
+        return motor;
+    }
+
+    public void setMotor(String motor) {
+        this.motor = motor;
+    }
+    
     public long getId() {
         return id;
     }
@@ -136,13 +180,15 @@ public class Task implements Serializable {
         this.dueTime = dueTime;
     }
 
-    public TaskStatus getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(TaskStatus status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
     }
+    
+    
     //</editor-fold>
 
 }

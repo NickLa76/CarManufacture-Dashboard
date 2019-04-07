@@ -7,16 +7,16 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.web;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.web;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.web.WebUtils;
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.TaskBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.BookingBean;
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Booking;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.BookingStatus;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.Time;
@@ -35,11 +35,11 @@ import javax.servlet.http.HttpSession;
 /**
  * Seite zum Anlegen oder Bearbeiten einer Aufgabe.
  */
-@WebServlet(urlPatterns = "/app/tasks/task/*")
-public class TaskEditServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/app/bookings/booking/*")
+public class BookingEditServlet extends HttpServlet {
 
     @EJB
-    TaskBean taskBean;
+    BookingBean bookingBean;
 
     @EJB
     CategoryBean categoryBean;
@@ -56,25 +56,25 @@ public class TaskEditServlet extends HttpServlet {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
-        request.setAttribute("statuses", TaskStatus.values());
+        request.setAttribute("statuses", BookingStatus.values());
 
         // Zu bearbeitende Aufgabe einlesen
         HttpSession session = request.getSession();
 
-        Task task = this.getRequestedTask(request);
-        request.setAttribute("edit", task.getId() != 0);
+        Booking booking = this.getRequestedBooking(request);
+        request.setAttribute("edit", booking.getId() != 0);
                                 
-        if (session.getAttribute("task_form") == null) {
+        if (session.getAttribute("booking_form") == null) {
             // Keine Formulardaten mit fehlerhaften Daten in der Session,
             // daher Formulardaten aus dem Datenbankobjekt übernehmen
-            request.setAttribute("task_form", this.createTaskForm(task));
+            request.setAttribute("booking_form", this.createBookingForm(booking));
            
         }
-        request.setAttribute("fahrzeugmodell", "3er BMW");
+        request.setAttribute("Modell", "C-Klasse");
         // Anfrage an die JSP weiterleiten
-        request.getRequestDispatcher("/WEB-INF/tasks/task_edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/bookings/booking_edit.jsp").forward(request, response);
         
-        session.removeAttribute("task_form");
+        session.removeAttribute("booking_form");
     }
 
     @Override
@@ -90,10 +90,10 @@ public class TaskEditServlet extends HttpServlet {
 
         switch (action) {
             case "save":
-                this.saveTask(request, response);
+                this.saveBooking(request, response);
                 break;
             case "delete":
-                this.deleteTask(request, response);
+                this.deleteBooking(request, response);
                 break;
         }
     }
@@ -106,64 +106,71 @@ public class TaskEditServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    private void saveTask(HttpServletRequest request, HttpServletResponse response)
+    private void saveBooking(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
 
-        String taskCategory = request.getParameter("task_category");
-        String taskDueDate = request.getParameter("task_due_date");
-        String taskDueTime = request.getParameter("task_due_time");
-        String taskStatus = request.getParameter("task_status");
-        String taskShortText = request.getParameter("task_short_text");
-        String taskLongText = request.getParameter("task_long_text");
+        String bookingCategory = request.getParameter("booking_category");
+        String bookingDueDate = request.getParameter("booking_due_date");
+        String bookingDueTime = request.getParameter("booking_due_time");
+        String bookingStatus = request.getParameter("booking_status");
+        String bookingShortText = request.getParameter("booking_short_text");
+        String bookingLongText = request.getParameter("booking_long_text");
+        String bookingWerk = request.getParameter("booking_werk");
+        String bookingFarbe = request.getParameter("booking_farbe");
+        String bookingMotor = request.getParameter("booking_motor");
+        
 
-        Task task = this.getRequestedTask(request);
+        Booking booking = this.getRequestedBooking(request);
 
-        if (taskCategory != null && !taskCategory.trim().isEmpty()) {
+        if (bookingCategory != null && !bookingCategory.trim().isEmpty()) {
             try {
-                task.setCategory(this.categoryBean.findById(Long.parseLong(taskCategory)));
+                booking.setCategory(this.categoryBean.findById(Long.parseLong(bookingCategory)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
         }
 
-        Date dueDate = WebUtils.parseDate(taskDueDate);
-        Time dueTime = WebUtils.parseTime(taskDueTime);
+        Date dueDate = WebUtils.parseDate(bookingDueDate);
+        Time dueTime = WebUtils.parseTime(bookingDueTime);
 
         if (dueDate != null) {
-            task.setDueDate(dueDate);
+            booking.setDueDate(dueDate);
         } else {
             errors.add("Das Datum muss dem Format dd.mm.yyyy entsprechen.");
         }
 
         if (dueTime != null) {
-            task.setDueTime(dueTime);
+            booking.setDueTime(dueTime);
         } else {
             errors.add("Die Uhrzeit muss dem Format hh:mm:ss entsprechen.");
         }
 
         try {
-            task.setStatus(TaskStatus.valueOf(taskStatus));
+            booking.setStatus(BookingStatus.valueOf(bookingStatus));
         } catch (IllegalArgumentException ex) {
             errors.add("Der ausgewählte Status ist nicht vorhanden.");
         }
 
-        task.setShortText(taskShortText);
-        task.setLongText(taskLongText);
+        booking.setShortText(bookingShortText);
+        booking.setLongText(bookingLongText);
+        booking.setMotor(bookingMotor);
+        booking.setFarbe(bookingFarbe);
+        booking.setWerk(bookingWerk);
 
-        this.validationBean.validate(task, errors);
+        this.validationBean.validate(booking, errors);
 
         // Datensatz speichern
         if (errors.isEmpty()) {
-            this.taskBean.update(task);
+            this.bookingBean.update(booking);
         }
 
         // Weiter zur nächsten Seite
         if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
-            response.sendRedirect(WebUtils.appUrl(request, "/app/tasks/list/"));
+            response.sendRedirect(WebUtils.appUrl(request, "/app/bookings/list/"));
         } else {
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
@@ -171,7 +178,7 @@ public class TaskEditServlet extends HttpServlet {
             formValues.setErrors(errors);
 
             HttpSession session = request.getSession();
-            session.setAttribute("task_form", formValues);
+            session.setAttribute("booking_form", formValues);
 
             response.sendRedirect(request.getRequestURI());
         }
@@ -181,19 +188,18 @@ public class TaskEditServlet extends HttpServlet {
      * Aufgerufen in doPost: Vorhandene Aufgabe löschen
      *
      * @param request
-     * @param response
      * @throws ServletException
      * @throws IOException
      */
-    private void deleteTask(HttpServletRequest request, HttpServletResponse response)
+    private void deleteBooking(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         // Datensatz löschen
-        Task task = this.getRequestedTask(request);
-        this.taskBean.delete(task);
+        Booking booking = this.getRequestedBooking(request);
+        this.bookingBean.delete(booking);
 
         // Zurück zur Übersicht
-        response.sendRedirect(WebUtils.appUrl(request, "/app/tasks/list/"));
+        response.sendRedirect(WebUtils.appUrl(request, "/app/bookings/list/"));
     }
 
     /**
@@ -204,34 +210,34 @@ public class TaskEditServlet extends HttpServlet {
      * @param request HTTP-Anfrage
      * @return Zu bearbeitende Aufgabe
      */
-    private Task getRequestedTask(HttpServletRequest request) {
+    private Booking getRequestedBooking(HttpServletRequest request) {
         // Zunächst davon ausgehen, dass ein neuer Satz angelegt werden soll
-        Task task = new Task();
-        task.setOwner(this.userBean.getCurrentUser());
-        task.setDueDate(new Date(System.currentTimeMillis()));
-        task.setDueTime(new Time(System.currentTimeMillis()));
+        Booking booking = new Booking();
+        booking.setOwner(this.userBean.getCurrentUser());
+        booking.setDueDate(new Date(System.currentTimeMillis()));
+        booking.setDueTime(new Time(System.currentTimeMillis()));
 
         // ID aus der URL herausschneiden
-        String taskId = request.getPathInfo();
+        String bookingId = request.getPathInfo();
 
-        if (taskId == null) {
-            taskId = "";
+        if (bookingId == null) {
+            bookingId = "";
         }
 
-        taskId = taskId.substring(1);
+        bookingId = bookingId.substring(1);
 
-        if (taskId.endsWith("/")) {
-            taskId = taskId.substring(0, taskId.length() - 1);
+        if (bookingId.endsWith("/")) {
+            bookingId = bookingId.substring(0, bookingId.length() - 1);
         }
 
         // Versuchen, den Datensatz mit der übergebenen ID zu finden
         try {
-            task = this.taskBean.findById(Long.parseLong(taskId));
+            booking = this.bookingBean.findById(Long.parseLong(bookingId));
         } catch (NumberFormatException ex) {
             // Ungültige oder keine ID in der URL enthalten
         }
 
-        return task;
+        return booking;
     }
 
     /**
@@ -241,40 +247,52 @@ public class TaskEditServlet extends HttpServlet {
      * Formular aus der Entity oder aus einer vorherigen Formulareingabe
      * stammen.
      *
-     * @param task Die zu bearbeitende Aufgabe
+     * @param booking Die zu bearbeitende Aufgabe
      * @return Neues, gefülltes FormValues-Objekt
      */
-    private FormValues createTaskForm(Task task) {
+    private FormValues createBookingForm(Booking booking) {
         Map<String, String[]> values = new HashMap<>();
 
-        values.put("task_owner", new String[]{
-            task.getOwner().getUsername()
+        values.put("booking_owner", new String[]{
+            booking.getOwner().getUsername()
         });
 
-        if (task.getCategory() != null) {
-            values.put("task_category", new String[]{
-                "" + task.getCategory().getId()
+        if (booking.getCategory() != null) {
+            values.put("booking_category", new String[]{
+                "" + booking.getCategory().getId()
             });
         }
 
-        values.put("task_due_date", new String[]{
-            WebUtils.formatDate(task.getDueDate())
+        values.put("booking_due_date", new String[]{
+            WebUtils.formatDate(booking.getDueDate())
         });
 
-        values.put("task_due_time", new String[]{
-            WebUtils.formatTime(task.getDueTime())
+        values.put("booking_due_time", new String[]{
+            WebUtils.formatTime(booking.getDueTime())
         });
 
-        values.put("task_status", new String[]{
-            task.getStatus().toString()
+        values.put("booking_status", new String[]{
+            booking.getStatus().toString()
         });
 
-        values.put("task_short_text", new String[]{
-            task.getShortText()
+        values.put("booking_short_text", new String[]{
+            booking.getShortText()
         });
 
-        values.put("task_long_text", new String[]{
-            task.getLongText()
+        values.put("booking_long_text", new String[]{
+            booking.getLongText()
+        });
+        
+        values.put("booking_werk", new String[]{
+            booking.getWerk()
+        });
+        
+        values.put("booking_farbe", new String[]{
+            booking.getFarbe()
+        });
+        
+        values.put("booking_motor", new String[]{
+            booking.getMotor()
         });
 
         FormValues formValues = new FormValues();

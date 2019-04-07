@@ -7,7 +7,7 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class Category implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    List<Task> tasks = new ArrayList<>();
+    List<Booking> bookings = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public Category() {
@@ -70,12 +70,12 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
+    public List<Booking> getBookings() {
+        return bookings;
     }
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
     //</editor-fold>
 

@@ -17,16 +17,16 @@
     <jsp:attribute name="title">
         <c:choose>
             <c:when test="${edit}">
-                Aufgabe bearbeiten
+                Bestellung bearbeiten
             </c:when>
             <c:otherwise>
-                Aufgabe anlegen
+                Bestellung anlegen
             </c:otherwise>
         </c:choose>
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_edit.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/booking_edit.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -35,7 +35,7 @@
         </div>
         
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/bookings/list/"/>">Liste</a>
         </div>
     </jsp:attribute>
 
@@ -46,74 +46,86 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
-                <label for="task_owner">Ersteller:</label>
+                <label for="booking_owner">Ersteller:</label>
                 <div class="side-by-side">
-                    <input type="text" name="task_owner" value="${task_form.values["task_owner"][0]}" readonly="readonly">
+                    <input type="text" name="booking_owner" value="${booking_form.values["booking_owner"][0]}" readonly="readonly">
                 </div>
                 
-                <label for="task_category">Fahrzeugkategorie</label>
+                <label for="booking_due_date">
+                    Erstellungsdatum:
+                    <span class="required">*</span>
+                </label>
                 <div class="side-by-side">
-                    <select name="task_category">
+                    <input type="text" name="booking_due_date" value="${booking_form.values["booking_due_date"][0]}">
+                    <input type="text" name="booking_due_time" value="${booking_form.values["booking_due_time"][0]}">
+                </div>
+                
+                <label for="booking_status">
+                    Status:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side margin">
+                    <select name="booking_status">
+                        <c:forEach items="${statuses}" var="status">
+                            <option value="${status}" ${booking_form.values["booking_status"][0] == status ? 'selected' : ''}>
+                                <c:out value="${status.label}"/>
+                            </option>
+                        </c:forEach>
+                    </select>
+                </div>
+                
+                <label for="booking_category">Fahrzeugkategorie</label>
+                <div class="side-by-side">
+                    <select name="booking_category">
                         <option value="">----------</option>
-                        <option value="">Kleinwagen</option>
-                         <option value="">Kombi</option>
-                         <option value="">Limousine</option>
-                         <option value="">Van/Minibus</option>
-                         <option value="">SUV/Geländewagen/Pickup</option>
-                         <option value="">Cabrio/Roadstar</option>
-                         <option value="">Sportwagen/Coupé</option>
 
                         <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${task_form.values["task_category"][0] == category.id.toString() ? 'selected' : ''}>
+                            <option value="${category.id}" ${booking_form.values["booking_category"][0] == category.id.toString() ? 'selected' : ''}>
                                 <c:out value="${category.name}" />
                             </option>
                         </c:forEach>
                     </select>
                 </div>
 
-                <label for="task_due_date">
-                    Fällig am:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side">
-                    <input type="text" name="task_due_date" value="${task_form.values["task_due_date"][0]}">
-                    <input type="text" name="task_due_time" value="${task_form.values["task_due_time"][0]}">
-                </div>
+               
 
-                <label for="task_status">
-                    Status:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side margin">
-                    <select name="task_status">
-                        <c:forEach items="${statuses}" var="status">
-                            <option value="${status}" ${task_form.values["task_status"][0] == status ? 'selected' : ''}>
-                                <c:out value="${status.label}"/>
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div>
-
-                <label for="task_short_text">
-                    Bezeichnung:
+                <label for="booking_short_text">
+                    Modell:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
-                    <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
-                </div>
-                <label for="task_short_text">
-                    Variante:
-                    <span class="required">*</span>
-                </label>
-                <div class="side-by-side">
-                    <input type="text" name="task_short_text" value="${task_form.values["task_short_text"][0]}">
+                    <input type="text" name="booking_short_text" value="${booking_form.values["booking_short_text"][0]}">
                 </div>
                 
-                <label for="task_long_text">
+                <label for="booking_motor">
+                    Motorisierung:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="booking_motor" value="${booking_form.values["booking_motor"][0]}">
+                </div>
+                
+                <label for="booking_farbe">
+                    Farbe:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="booking_farbe" value="${booking_form.values["booking_farbe"][0]}">
+                </div>
+                
+                <label for="booking_werk">
+                    Werk:
+                    <span class="required">*</span>
+                </label>
+                <div class="side-by-side">
+                    <input type="text" name="booking_werk" value="${booking_form.values["booking_werk"][0]}">
+                </div>
+                
+                <label for="booking_long_text">
                     Ausstattung:
                 </label>
                 <div class="side-by-side">
-                    <textarea name="task_long_text"><c:out value="${task_form.values['task_long_text'][0]}"/></textarea>
+                    <textarea name="booking_long_text"><c:out value="${booking_form.values['booking_long_text'][0]}"/></textarea>
                 </div>
 
                 <%-- Button zum Abschicken --%>
@@ -131,9 +143,9 @@
             </div>
 
             <%-- Fehlermeldungen --%>
-            <c:if test="${!empty task_form.errors}">
+            <c:if test="${!empty booking_form.errors}">
                 <ul class="errors">
-                    <c:forEach items="${task_form.errors}" var="error">
+                    <c:forEach items="${booking_form.errors}" var="error">
                         <li>${error}</li>
                     </c:forEach>
                 </ul>

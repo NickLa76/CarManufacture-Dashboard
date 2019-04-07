@@ -7,13 +7,13 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.web;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.web;
 
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb.TaskBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.CategoryBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb.BookingBean;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Booking;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.BookingStatus;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -26,14 +26,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet für die tabellarische Auflisten der Aufgaben.
  */
-@WebServlet(urlPatterns = {"/app/tasks/list/"})
-public class TaskListServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/app/bookings/list/"})
+public class BookingListServlet extends HttpServlet {
 
     @EJB
     private CategoryBean categoryBean;
     
     @EJB
-    private TaskBean taskBean;
+    private BookingBean bookingBean;
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +41,7 @@ public class TaskListServlet extends HttpServlet {
 
         // Verfügbare Kategorien und Stati für die Suchfelder ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
-        request.setAttribute("statuses", TaskStatus.values());
+        request.setAttribute("statuses", BookingStatus.values());
 
         // Suchparameter aus der URL auslesen
         String searchText = request.getParameter("search_text");
@@ -50,7 +50,7 @@ public class TaskListServlet extends HttpServlet {
 
         // Anzuzeigende Aufgaben suchen
         Category category = null;
-        TaskStatus status = null;
+        BookingStatus status = null;
 
         if (searchCategory != null) {
             try {
@@ -62,17 +62,17 @@ public class TaskListServlet extends HttpServlet {
 
         if (searchStatus != null) {
             try {
-                status = TaskStatus.valueOf(searchStatus);
+                status = BookingStatus.valueOf(searchStatus);
             } catch (IllegalArgumentException ex) {
                 status = null;
             }
 
         }
 
-        List<Task> tasks = this.taskBean.search(searchText, category, status);
-        request.setAttribute("tasks", tasks);
+        List<Booking> bookings = this.bookingBean.search(searchText, category, status);
+        request.setAttribute("bookings", bookings);
 
         // Anfrage an die JSP weiterleiten
-        request.getRequestDispatcher("/WEB-INF/tasks/task_list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/bookings/booking_list.jsp").forward(request, response);
     }
 }

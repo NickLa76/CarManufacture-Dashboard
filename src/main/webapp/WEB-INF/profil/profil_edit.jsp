@@ -10,6 +10,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<c:set var="base_url" value="<%=request.getContextPath()%>" />
+
 <template:base>
     <jsp:attribute name="title">
         Mein Profil Bearbeiten
@@ -22,6 +24,10 @@
     <jsp:attribute name="menu">
         <div class="menuitem">
             <a href="<c:url value="/app/dashboard/"/>">Dashboard</a>
+        </div>
+        
+        <div class="menuitem">
+            <a href="<c:url value="/app/profil/"/>">zurück zum Profil</a>
         </div>
 
     </jsp:attribute>

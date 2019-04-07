@@ -24,17 +24,21 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/list/"/>">Liste</a>
+            <a href="<c:url value="/app/bookings/list/"/>">Liste</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/bookings/booking/new/"/>">Bestellung aufgeben</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
+            <a href="<c:url value="/app/bookings/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
         </div>
-
+        
+        
+        <div class="menuitem">
+            <a href="<c:url value="/app/profil/"/>">Mein Profil</a>
+        </div>
 
     </jsp:attribute>
 

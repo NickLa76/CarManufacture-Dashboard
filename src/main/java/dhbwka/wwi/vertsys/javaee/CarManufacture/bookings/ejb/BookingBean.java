@@ -7,12 +7,12 @@
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
-package dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.ejb;
+package dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.ejb;
 
 import dhbwka.wwi.vertsys.javaee.CarManufacture.common.ejb.EntityBean;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.Task;
-import dhbwka.wwi.vertsys.javaee.CarManufacture.tasks.jpa.TaskStatus;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Category;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.Booking;
+import dhbwka.wwi.vertsys.javaee.CarManufacture.bookings.jpa.BookingStatus;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -26,10 +26,10 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 @RolesAllowed("app-user")
-public class TaskBean extends EntityBean<Task, Long> { 
+public class BookingBean extends EntityBean<Booking, Long> { 
    
-    public TaskBean() {
-        super(Task.class);
+    public BookingBean() {
+        super(Booking.class);
     }
     
     /**
@@ -37,8 +37,8 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @param username Benutzername
      * @return Alle Aufgaben des Benutzers
      */
-    public List<Task> findByUsername(String username) {
-        return em.createQuery("SELECT t FROM Task t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
+    public List<Booking> findByUsername(String username) {
+        return em.createQuery("SELECT t FROM Booking t WHERE t.owner.username = :username ORDER BY t.dueDate, t.dueTime")
                  .setParameter("username", username)
                  .getResultList();
     }
@@ -54,13 +54,13 @@ public class TaskBean extends EntityBean<Task, Long> {
      * @param status Status (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Task> search(String search, Category category, TaskStatus status) {
+    public List<Booking> search(String search, Category category, BookingStatus status) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
-        // SELECT t FROM Task t
-        CriteriaQuery<Task> query = cb.createQuery(Task.class);
-        Root<Task> from = query.from(Task.class);
+        // SELECT t FROM Booking t
+        CriteriaQuery<Booking> query = cb.createQuery(Booking.class);
+        Root<Booking> from = query.from(Booking.class);
         query.select(from);
 
         // ORDER BY dueDate, dueTime

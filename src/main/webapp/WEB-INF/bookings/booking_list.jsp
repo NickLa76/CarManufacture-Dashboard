@@ -15,11 +15,11 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Liste der Aufgaben
+        Liste der Bestellungen
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/task_list.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/booking_list.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
@@ -28,18 +28,18 @@
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/task/new/"/>">Aufgabe anlegen</a>
+            <a href="<c:url value="/app/bookings/booking/new/"/>">Bestellung aufgeben</a>
         </div>
 
         <div class="menuitem">
-            <a href="<c:url value="/app/tasks/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
+            <a href="<c:url value="/app/bookings/categories/"/>">Neue Fahrzeugkategorie hinzufügen</a>
         </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Beschreibung"/>
+            <input type="text" name="search_text" value="${param.search_text}" placeholder="Modell"/>
 
             <select name="search_category">
                 <option value="">Alle Kategorien</option>
@@ -68,9 +68,10 @@
 
         <%-- Gefundene Aufgaben --%>
         <c:choose>
-            <c:when test="${empty tasks}">
+            <c:when test="${empty bookings}">
                 <p>
-                    Es wurden keine Aufgaben gefunden. 🐈
+                    Es wurden keine Besstelung gefunden. 🐈
+                    Also bestell etwas! 
                 </p>
             </c:when>
             <c:otherwise>
@@ -79,36 +80,56 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Beschreibung</th>
+                            <th>Modell</th>
                             <th>Fahrzeugkategorie</th>
-                            <th>Ersteller</th>
+                            <th>Motorisierung</th>
                             <th>Status</th>
-                            <th>Fällig am</th>
+                            <th>Ersteller</th>
+                            <th>Farbe</th>
+                            <th>Erstellungsdatum</th>
                             <th>Werk</th>
-                            <th>Fertigungsstraße</th>
-                            <th>Barcode</th>
                             <th>Ausstattung</th>
                         </tr>
                     </thead>
-                    <c:forEach items="${tasks}" var="task">
+                    <c:forEach items="${bookings}" var="booking">
                         <tr>
                             <td>
-                                <a href="<c:url value="/app/tasks/task/${task.id}/"/>">
-                                    <c:out value="${task.shortText}"/>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.shortText}"/>
                                 </a>
                             </td>
                             <td>
-                                <c:out value="${task.category.name}"/>
+                                <c:out value="${booking.category.name}"/>
                             </td>
                             <td>
-                                <c:out value="${task.owner.username}"/>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.motor}"/>
+                                </a>
                             </td>
                             <td>
-                                <c:out value="${task.status.label}"/>
+                                <c:out value="${booking.status.label}"/>
                             </td>
                             <td>
-                                <c:out value="${utils.formatDate(task.dueDate)}"/>
-                                <c:out value="${utils.formatTime(task.dueTime)}"/>
+                                <c:out value="${booking.owner.username}"/>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.farbe}"/>
+                                </a>
+                            </td>
+                            <td>
+                                <c:out value="${utils.formatDate(booking.dueDate)}"/>
+                                <c:out value="${utils.formatTime(booking.dueTime)}"/>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.werk}"/>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="<c:url value="/app/bookings/booking/${booking.id}/"/>">
+                                    <c:out value="${booking.longText}"/>
+                                </a>
                             </td>
                         </tr>
                     </c:forEach>
