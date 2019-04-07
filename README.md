@@ -35,7 +35,7 @@ Folgende Entwicklungswerkzeuge kommen dabei zum Einsatz:
  * [TomEE:](https://tomee.apache.org/) Applikationsserver zum lokalen Testen der Anwendung
  * [Derby:](https://db.apache.org/derby/) In Java implementierte SQL-Datenbank zum Testen der Anwendung
  
- Hinweis zur Ausführunf des SOAP-Webservices:
+ Hinweis zur Ausführung des SOAP-Webservices:
  Nachdem das eigentliche Projekt CarManufacture geöffnet wurde muss nun noch das SOAP-Projekt geöffnet werden dies lässt sich als separates Project in NetBeans öffnen.
 
 Screenshots
