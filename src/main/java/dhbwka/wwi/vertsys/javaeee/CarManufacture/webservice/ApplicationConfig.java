@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaeee.CarManifacture.webservice;
+package dhbwka.wwi.vertsys.javaeee.CarManufacture.webservice;
 
 /**
  *
  * @author LAMPERN
  */
 
-import dhbwka.wwi.vertsys.javaeee.CarManifacture.webservice.CarService;
+import dhbwka.wwi.vertsys.javaeee.CarManufacture.webservice.CarService;
 import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
